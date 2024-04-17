@@ -1,3 +1,4 @@
+using AppodealAds.Unity.Api;
 using AppodealAds.Unity.Common;
 using System;
 using System.Collections.Generic;
@@ -10,12 +11,10 @@ public class AdsManager : IAppodealInitializationListener
 
     public AdsManager()
     {
-        /*
+        Appodeal.setTesting(true);
         int adTypes = Appodeal.INTERSTITIAL;
         string appKey = "YOUR_APPODEAL_APP_KEY";
         Appodeal.initialize(appKey, adTypes, this);
-        */
-
     }
 
     public void onInitializationFinished(List<string> errors)
@@ -24,7 +23,6 @@ public class AdsManager : IAppodealInitializationListener
 
     public bool TryShowInterstitial()
     {
-        /*
         if (Appodeal.isLoaded(Appodeal.INTERSTITIAL) && Appodeal.canShow(Appodeal.INTERSTITIAL, "default") && !Appodeal.isPrecache(Appodeal.INTERSTITIAL))
         {
             Appodeal.show(Appodeal.INTERSTITIAL);
@@ -32,13 +30,9 @@ public class AdsManager : IAppodealInitializationListener
         }
         else
         {
-            Appodeal.cache(Appodeal.INTERSTITIAL);
-            return false;
+            DebugShowInter();
+            return true;
         }
-        */
-        DebugShowInter();
-        return true;
-                
     }
 
     private async Task DebugShowInter()
